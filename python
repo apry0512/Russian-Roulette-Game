@@ -1,0 +1,35 @@
+import random
+
+class RussianRoulette:
+    def __init__(self):
+        self.chambers = 6
+        self.bullet_position = random.randint(1, self.chambers)
+
+    def play(self):
+        print("Welcome to Russian Roulette!")
+        print("There are 6 chambers in the revolver.")
+        print("One of them has a bullet.")
+
+        while True:
+            user_input = input("Do you want to pull the trigger? (yes/no): ")
+            if user_input.lower() == "yes":
+                self.pull_trigger()
+            elif user_input.lower() == "no":
+                print("You're a coward!")
+                break
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
+
+    def pull_trigger(self):
+        current_position = random.randint(1, self.chambers)
+        print(f"You pulled the trigger... Chamber {current_position} is being fired.")
+
+        if current_position == self.bullet_position:
+            print("BANG! You're dead!")
+            exit()
+        else:
+            print("Click! You're alive... for now.")
+
+if __name__ == "__main__":
+    game = RussianRoulette()
+    game.play()
